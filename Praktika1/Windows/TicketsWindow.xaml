@@ -1,0 +1,68 @@
+﻿<Window x:Class="Airport.TicketsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Билеты" Height="600" Width="1200"
+        MinWidth="650" MinHeight="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Background="#ffff">
+                <Image Source="C:\Users\kabin\source\repos\Praktika1\Praktika1\Img\123.png" Height="100" Width="100"/>
+                <Button Content="Авиакомпании" Margin="3" Height="60" Click="CompaniesButton_Click"/>
+                <Button Content="Самолёты" Margin="3" Height="60" Click="PlanesButton_Click"/>
+                <Button Content="Рейсы" Margin="3" Height="60" Click="FlightsButton_Click"/>
+                <Button Content="Члены экипажа" Margin="3" Height="60" Click="CrewButton_Click"/>
+                <Button Content="Пассажиры" Margin="3" Height="60" Click="PassengersButton_Click"/>
+                <Button Content="Билеты" Margin="3" Height="60"/>
+                <Button Content="Пользователи" Margin="3" Height="60" Click="UsersButton_Click"/>
+                <Button Content="Выход" Margin="3" Height="60" VerticalAlignment="Bottom" Click="LogoutButton_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Grid.Column="1" Margin="0,54,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="SkyWings Airlines" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <Grid Grid.Row="1" Background="#B5D5CA" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <WrapPanel HorizontalAlignment="Center" Margin="10">
+                    <TextBox x:Name="SearchTextBox" Width="361" Height="50" FontSize="16" Margin="10"/>
+                    <ComboBox x:Name="ComboBoxColumn" Width="200" Height="50" FontSize="16" Margin="10">
+                        <ComboBoxItem Content="Цена билета"/>
+                        <ComboBoxItem Content="Класс билета"/>
+                        <ComboBoxItem Content="Дата/время покупки"/>
+                        <ComboBoxItem Content="Пассажир"/>
+                    </ComboBox>
+                    <Button Content="Поиск" Width="140" Height="50" Margin="10" Click="SearchButton_Click"/>
+                    <Button Content="Добавить" Width="140" Height="50" Margin="10" Click="AddButton_Click"/>
+                </WrapPanel>
+                <DataGrid x:Name="TicketsDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Действия" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Редактировать" Click="EditRow_Click" Tag="{Binding Ticket_ID}" Margin="5"/>
+                                        <Button Content="Удалить" Click="DeleteRow_Click" Tag="{Binding Ticket_ID}" Margin="5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Цена билета" Binding="{Binding Ticket_Price}" Width="*" />
+                        <DataGridTextColumn Header="Класс билета" Binding="{Binding Ticket_Class}" Width="*" />
+                        <DataGridTextColumn Header="Дата/время покупки" Binding="{Binding Purchase_Date_Time}" Width="*" />
+                        <DataGridTextColumn Header="Пассажир" Binding="{Binding Passenger.Last_Name}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

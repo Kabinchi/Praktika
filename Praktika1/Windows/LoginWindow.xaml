@@ -1,0 +1,22 @@
+﻿<Window x:Class="Airport.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" Height="450" Width="800" Background="#FFFF">
+    <Grid>
+        <Border Background="#B5D5CA" CornerRadius="20"
+                Width="586" Height="318"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+                <Image Source="C:\Users\kabin\source\repos\Praktika1\Praktika1\Img\123.png" Height="98" Width="117" Margin="5" />
+                <TextBlock Text="SkyWings Airlines" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock Text="Логин:" FontSize="16" Width="390" PreviewTextInput="TextValidationTextBox"/>
+                <TextBox x:Name="LoginTextBox" FontSize="16" Height="30" Width="389" />
+                <TextBlock Text="Пароль:" FontSize="16" />
+                <PasswordBox x:Name="PasswordBox" FontSize="16" Height="30" Width="388" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button Content="Войти" Width="100" Height="30" Margin="0 0 10 0" Click="LoginButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
